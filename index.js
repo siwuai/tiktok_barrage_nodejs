@@ -186,7 +186,7 @@ const Barrage = class {
                 console.log("聊天：", msg)
                 result = Object.assign(result, {
                     isGift: false,
-                    msg_content: msg.display_text.
+                    msg_content: msg.display_text
                 })
                 break
             default:
