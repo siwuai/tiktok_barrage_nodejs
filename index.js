@@ -141,6 +141,8 @@ const Barrage = class {
     }
     messageParse(dom) {
         console.log("dom", dom)
+        console.log("propsId", this.propsId)
+        console.log("dom[this.propsId]", dom[this.propsId])
         if (!dom[this.propsId].children.props.message) {
             return null
         }
