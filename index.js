@@ -186,18 +186,18 @@ const Barrage = class {
                 // console.log("聊天：", msg)
                 result = Object.assign(result, {
                     isGift: false,
-                    msg_content: msg.display_text
-                })
-                break
-            default:
-                result = Object.assign(result, {
-                    isGift: false,
-                    msg_content: msg.default_pattern.replace(/\{\d+:[^\}]+\}/g, (match) => {
+                    msg_content: msg.display_text.default_pattern.replace(/\{\d+:[^\}]+\}/g, (match) => {
                         // 使用正则表达式匹配占位符，并提取出占位符中的数字作为索引
                         let index = parseInt(match.match(/\d+/)[0]);
                         // 使用索引从数组中获取相应的值
                         return s.pieces[index].string_value || s.pieces[index].user_value.user.nickname || match; 
                       })
+                })
+                break
+            default:
+                result = Object.assign(result, {
+                    isGift: false,
+                    msg_content: msg.content
                 })
                 break
         }
