@@ -88,7 +88,7 @@ const Barrage = class {
         }
 
         this.chatObserverrom = new MutationObserver((mutationsList, observer) => {
-            console.log("mutationsList", mutationsList)
+            // console.log("mutationsList", mutationsList)
             for (let mutation of mutationsList) {
                 if (mutation.type === 'childList' && mutation.addedNodes.length) {
                     let b = mutation.addedNodes[0]
@@ -140,14 +140,14 @@ const Barrage = class {
         }
     }
     messageParse(dom) {
-        console.log("dom", dom)
-        console.log("propsId", this.propsId)
-        console.log("dom[this.propsId]", dom[this.propsId])
+        // console.log("dom", dom)
+        // console.log("propsId", this.propsId)
+        // console.log("dom[this.propsId]", dom[this.propsId])
         if (!dom[this.propsId].children.props.message) {
             return null
         }
         let msg = dom[this.propsId].children.props.message.payload
-        console.log("msg", msg)
+        // console.log("msg", msg)
         let result = {
             repeatCount: null,
             gift_id: null,
@@ -161,7 +161,7 @@ const Barrage = class {
         result = Object.assign(result, this.getUser(msg.user))
         switch (msg.common.method) {
             case 'WebcastGiftMessage':
-                console.log("礼物：", msg)
+                // console.log("礼物：", msg)
                 result = Object.assign(result, {
                     // repeatCount: parseInt(),
                     msg_content: msg.common.describe,
@@ -176,14 +176,14 @@ const Barrage = class {
                 })
                 break
             case 'WebcastChatMessage':
-                console.log("聊天：", msg)
+                // console.log("聊天：", msg)
                 result = Object.assign(result, {
                     isGift: false,
                     msg_content: msg.content
                 })
                 break
             case 'WebcastRoomMessage':
-                console.log("聊天：", msg)
+                // console.log("聊天：", msg)
                 result = Object.assign(result, {
                     isGift: false,
                     msg_content: msg.display_text
