@@ -88,6 +88,7 @@ const Barrage = class {
         }
 
         this.chatObserverrom = new MutationObserver((mutationsList, observer) => {
+            console.log("mutationsList", mutationsList)
             for (let mutation of mutationsList) {
                 if (mutation.type === 'childList' && mutation.addedNodes.length) {
                     let b = mutation.addedNodes[0]
@@ -139,6 +140,7 @@ const Barrage = class {
         }
     }
     messageParse(dom) {
+        console.log("dom", dom)
         if (!dom[this.propsId].children.props.message) {
             return null
         }
@@ -156,7 +158,7 @@ const Barrage = class {
         result = Object.assign(result, this.getUser(msg.user))
         switch (msg.common.method) {
             case 'WebcastGiftMessage':
-                console.log(msg)
+                console.log("礼物：", msg)
                 result = Object.assign(result, {
                     // repeatCount: parseInt(),
                     msg_content: msg.common.describe,
@@ -171,6 +173,7 @@ const Barrage = class {
                 })
                 break
             case 'WebcastChatMessage':
+                console.log("聊天：", msg)
                 result = Object.assign(result, {
                     isGift: false,
                     msg_content: msg.content

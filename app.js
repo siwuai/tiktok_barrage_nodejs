@@ -6,6 +6,7 @@ const wss = new WebSocketServer({
 wss.on("connection", function connection(ws) {
     console.log("客户端连接成功");
     ws.on("message", function message(data) {
+        console.log("data", data.toString())
         let message = JSON.parse(data.toString())
         switch (message.action) {
             case 'message':
