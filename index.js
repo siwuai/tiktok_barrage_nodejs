@@ -145,6 +145,7 @@ const Barrage = class {
             return null
         }
         let msg = dom[this.propsId].children.props.message.payload
+        console.log("msg", msg)
         let result = {
             repeatCount: null,
             gift_id: null,
